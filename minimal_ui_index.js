@@ -110,11 +110,11 @@ async function downloadAndFlash() {
     } catch (error) {
         errorTroubleshootModalToggleButton.click();
         waitButton.style.display = "none";
-        errorTroubleshootModalTitle.textContent = "Flashing Error";
-        errorMessageDescription.textContent = "There is an error while flashing the firmware onto the device.";
-        errorMessage.textContent = `Error: ${error.message}`;
+        errorTroubleshootModalTitle.textContent = "烧录错误";
+        errorMessageDescription.textContent = "烧录固件到设备时出现错误。";
+        errorMessage.textContent = `错误: ${error.message}`;
         errorMessage.style.display = "block";
-        term.writeln(`\x1b[1;31mError: ${error.message}`);
+        term.writeln(`\x1b[1;31m错误: ${error.message}`);
         throw "Flashing Error";
     }
 }
@@ -252,7 +252,7 @@ async function buildMinimalLaunchpadUI() {
             if (xhr.status === 404) {
                 connectButton.disabled = true;
                 alertContainer.style.display = 'block';
-                lblConnTo.innerHTML = `<b style='text-align:center'><span style='color:red;'>Unable to access the TOML file. Please ensure that you have provided the correct TOML file link to the flashConfigURL parameter.</span></b>`;
+                lblConnTo.innerHTML = `<b style='text-align:center'><span style='color:red;'>无法访问 TOML 文件。请确认在 flashConfigURL 参数中提供了正确的 TOML 文件链接。</span></b>`;
                 lblConnTo.style.display = "block";
             }
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -267,15 +267,14 @@ async function buildMinimalLaunchpadUI() {
             waitButton.style.display = "none";
             troubleshootAccordionLabel.style.display = "none"
             troubleshootAccordion.style.display = "none";
-            errorTroubleshootModalTitle.textContent = "Error getting config file";
-            errorMessageDescription.innerHTML = `We are encountering issues downloading the configuration file. Please verify if you can 
-            download <a href=${tomlFileURL} target="_blank">this file</a>, if not, check your network settings (Firewall, VPN, etc.) and try again.`
+            errorTroubleshootModalTitle.textContent = "下载配置文件出错";
+            errorMessageDescription.innerHTML = `下载配置文件时遇到问题。请先确认能否访问 <a href=${tomlFileURL} target="_blank">该文件</a>；若无法访问，请检查网络设置（防火墙、VPN 等）后重试。`
             errorTroubleshootModalToggleButton.click();
         }
     } else {
         connectButton.disabled = true;
         alertContainer.style.display = 'block';
-        lblConnTo.innerHTML = `<b><span style='color:red;'>Please provide a TOML link supported by the minimal launchpad in flashConfigURL as shown below</span></b>
+        lblConnTo.innerHTML = `<b><span style='color:red;'>请在 flashConfigURL 中提供 minimal launchpad 支持的 TOML 链接，格式如下</span></b>
         <br /><code style="color:#664d03">https://espressif.github.io/esp-launchpad/minimal-launchpad/?flashConfigURL=&ltYOUR_TOML_FILE_LINK&gt</code>`;
         lblConnTo.style.display = "block";
     }
@@ -350,9 +349,9 @@ async function connectToDevice() {
             errorTroubleshootModalToggleButton.click();
         }
         waitButton.style.display = "none";
-        errorTroubleshootModalTitle.textContent = "Connection Error";
-        errorMessageDescription.textContent = "There is an error while connecting to the device.";
-        errorMessage.textContent = `Error: ${error.message}`;
+        errorTroubleshootModalTitle.textContent = "连接错误";
+        errorMessageDescription.textContent = "连接设备时出现错误。";
+        errorMessage.textContent = `错误: ${error.message}`;
         errorMessage.style.display = "block";
         throw "Connection Error";
     } finally {
@@ -420,7 +419,7 @@ consoleStartButton.onclick = async () => {
             }
             term.write(value);
         } catch (error) {
-            term.writeln(`Error: ${e.message}`);
+            term.writeln(`错误: ${error.message}`);
         }
     }
 }

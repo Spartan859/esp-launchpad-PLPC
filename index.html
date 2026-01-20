@@ -20,27 +20,27 @@
     <!-- Modal for error troubleshoot starts-->
     <button type="button" id="errorTroubleshootModalToggleButton" class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#errorTroubleshootModal" hidden>
-        Error Troubleshoot Modal Toggle Button
+        故障排查模态框切换按钮
     </button>
     <div class="modal fade" id="errorTroubleshootModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="errorTroubleshootModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="errorTroubleshootModalTitle">Connection In Progress</h5>
+                    <h5 class="modal-title" id="errorTroubleshootModalTitle">正在连接</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" hidden></button>
                 </div>
                 <div class="modal-body">
-                    <p id="errorMessageDescription">It's taking longer than usual for connecting the device.</p>
+                    <p id="errorMessageDescription">设备连接耗时较长。</p>
                     <p class="errorMessage" id="errorMessage" style="display: none;"></p>
-                    <p id="troubleshootAccordionLabel">Refer to the troubleshooting guide below for assistance in resolving the issue.</p>
+                    <p id="troubleshootAccordionLabel">请参考下方故障排查指南以获取帮助。</p>
                     <div class="accordion" id="troubleshootAccordion">
                         <div class="accordion-item border-0">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button collapsed" style="background-color: #eee;" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne">
-                                    Troubleshooting Guide
+                                    故障排查指南
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -50,64 +50,45 @@
                                         <div>
                                             <div class="col-xs-12">
                                                 <div class="col-xs-12 mt-2">
-                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>Device Connection
-                                                            Issue</b></h4>
+                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>设备连接问题</b></h4>
                                                     <p>
-                                                        If your device is not shown in list that pop-up while connection
-                                                        establishing step then your device might be not connected properly
-                                                        to port
-                                                        or their might be the
-                                                        <strong>browser compatability issue</strong>. Please
-                                                        ensure that it is properly connected to the port. Reseating
-                                                        connection cable might also helps to resolve this issue. If your device is connected to any other application, please
-                                                        disconnect it and try again.
+                                                        如果在建立连接时的弹窗列表中未看到您的设备，可能是设备未正确连接到端口，或存在
+                                                        <strong>浏览器兼容性问题</strong>。请确认设备已正确插入端口，尝试重新插拔连接线也可能有帮助。如果设备被其他应用占用，请先断开后再试。
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 mt-2">
                                                     <h4 class="topic mb-2" style="font-size: 14px;">
-                                                        <b>Serial Data Transmission Permission Issue</b>
+                                                        <b>串口读写权限问题</b>
                                                     </h4>
                                                     <div class="mb-3">
-                                                        For linux users, the currently logged in user should have read and write access the serial port over USB. On most Linux
-                                                        distributions, this is done by adding the user to dialout group with the following command:
+                                                        对于 Linux 用户，当前登录用户需要具备通过 USB 访问串口的读写权限。大多数发行版可通过将用户加入 dialout 组实现：
                                                         <div class="command-snippet"> usermod -a -G dialout $USER </div>
-                                                        on Arch Linux this is done by adding the user to uucp group with the following command:
+                                                        在 Arch Linux 上则需要将用户加入 uucp 组：
                                                         <div class="command-snippet"> sudo usermod -a -G uucp $USER </div>
-                                                        Make sure you re-login to enable read and write permissions for the serial port.
+                                                        执行后请重新登录以生效串口读写权限。
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 mt-2">
-                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>Browser Compatability
-                                                            Issue</b></h4>
+                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>浏览器兼容性问题</b></h4>
                                                     <p>
                                                         <span style="color: #e63f36">
-                                                            This tool is not supported on Safari & Firefox browsers yet!
+                                                            本工具暂不支持 Safari 和 Firefox！
                                                         </span>
-                                                        Please try using another browser like
-                                                        <strong>Google Chrome</strong> with supported version.
+                                                        请使用已支持的浏览器，例如 <strong>Google Chrome</strong>。
                                                     </p>
                                                     <p>
-                                                        ESP Launchpad makes use of <strong>Web Serial API</strong> to
-                                                        communicate with the device. Currently Safari & Firefox browsers
-                                                        don't support it yet. We will add support for this browser as soon
-                                                        as Safari & Firefox starts supporting Web Serial API. Please find
-                                                        more about <strong>Web Serial API</strong> browser compatability
-                                                        guide
+                                                        ESP Launchpad 通过 <strong>Web Serial API</strong> 与设备通信。目前 Safari 与 Firefox 尚未支持。
+                                                        一旦浏览器支持 Web Serial API，我们会尽快适配。可在此处查看
                                                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility"
-                                                            target="_blank">here</a>
+                                                            target="_blank">Web Serial API 浏览器兼容性</a>。
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 mt-2">
-                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>Device Compatability
-                                                            Issue</b></h4>
+                                                    <h4 class="topic mb-2" style="font-size: 14px;"><b>设备兼容性问题</b></h4>
                                                     <p>
-                                                        If you are using older devices or older versions of device then
-                                                        sometimes you may face an issue in
-                                                        connection establishing step or firmware flashing step. Please try
-                                                        that steps by pressing boot
-                                                        button provided on device.
+                                                        如果您使用的是较旧的设备或固件，可能会在建立连接或烧录固件时遇到问题。请尝试按下设备上的 Boot 按钮后重试。
                                                     <details>
-                                                        <summary>List of devices that supported by ESP Launchpad</summary>
+                                                        <summary>ESP Launchpad 支持的设备列表</summary>
                                                         <ol>
                                                             <li>ESP32</li>
                                                             <li>ESP32-C3</li>
@@ -124,25 +105,18 @@
                                                     <h4 class="topic mb-2" style="font-size: 14px;"><b>Driver Compatability
                                                             Issue</b></h4>
                                                     <p>
-                                                        It has been seen that on <strong>windows system</strong> with latest
-                                                        <strong>Silicon Lab CP210x USB
-                                                            to UART Bridge</strong>
-                                                        there are device connection or flashing issues.We are looking into
-                                                        it to resolve the issue.
-                                                        You can still try by downgrading silicon lab CP210x USB to UART
-                                                        Bridge driver version to
-                                                        <code>6.7.x</code> that can resolve issue on temporarily basis.
+                                                        已知在 <strong>Windows 系统</strong>下使用最新版 <strong>Silicon Lab CP210x USB to UART Bridge</strong> 时，可能出现连接或烧录问题，我们正在调查。
+                                                        可尝试临时将 CP210x 驱动降级到 <code>6.7.x</code> 版本以缓解。
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr />
                                         <div style="text-align: center;">
-                                            <p>If you still unable to troubleshoot the problem or face any other issues
-                                                please report them on <a
+                                            <p>如果仍无法解决问题或遇到其他情况，请前往 <a
                                                     href="https://github.com/espressif/esp-launchpad/issues"
-                                                    target="_blank">ESP launchpad Issues</a></p>
-                                            <p>We will be happy to help you resolve your issues !</p>
+                                                    target="_blank">ESP launchpad Issues</a> 反馈。</p>
+                                            <p>我们很乐意为您提供帮助！</p>
                                         </div>
                                     </div>
                                 </div>
@@ -156,13 +130,13 @@
                         style="display: inline-block">
                         <button type="button" class="app-button btn btn-outline-primary" data-bs-dismiss="modal"
                             id="waitButton">
-                            Wait For Connection
+                            继续等待连接
                         </button>
                     </div>
                     <div class="field-container" data-toggle="tooltip" data-bs-placement="top"
                         title="You can try it again !" style="display: inline-block">
                         <button type="button" class="app-button btn btn-outline-dark" onClick="window.location.reload();">
-                            Try Again
+                            重试
                         </button>
                     </div>
                 </div>
@@ -207,8 +181,7 @@
                 </div>
             </div>
             <!-- Connect Button -->
-            <button class="connectButton" id="connectButton" tabindex="0" type="button" disabled>Connect Your
-                Device<span class="span-svg"><svg class="svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+            <button class="connectButton" id="connectButton" tabindex="0" type="button" disabled>连接设备<span class="span-svg"><svg class="svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24"
                         data-testid="EastIcon">
                         <path fill="#FFFFFF" d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path>
                     </svg></span></button>
@@ -241,10 +214,10 @@
                                 </button>
                             </div>
                         </div>
-                        <div id="terminal"><span class="devicelog">Device Console</span></div>
+                        <div id="terminal"><span class="devicelog">设备控制台</span></div>
                         <div id="commandForm" style="display: none;">
                             <textarea rows="1" class="form-control rounded-0 shadow-none" autocomplete="off" id="commandInput"
-                                placeholder="Type your command and press enter" style="font-size: 14px; font-family: monospace;" disabled></textarea>
+                            placeholder="输入命令后按回车" style="font-size: 14px; font-family: monospace;" disabled></textarea>
                         </div>
                 </div>
             </div>
@@ -262,14 +235,10 @@
     <!-- Safari & FireFox not supported error message-->
     <div id="unsupportedBrowserErr" style="display: none">
         <p align="center" style="color: red">
-            This tool is not supported on Safari & Firefox browsers yet! Please try
-            using another browser like Google Chrome.
+            本工具暂不支持 Safari 和 Firefox。请尝试使用 Google Chrome 等浏览器。
             <br />
             <br />
-            ESP Launchpad makes use of WebUSB to communicate with the device.
-            Currently Safari & Firefox browsers don't support it yet. We will add
-            support for this browser as soon as Safari & Firefox starts supporting
-            WebUSB.
+            ESP Launchpad 通过 WebUSB 与设备通信，Safari 与 Firefox 目前尚未支持。待其支持 WebUSB 后我们会尽快适配。
         </p>
     </div>
 
