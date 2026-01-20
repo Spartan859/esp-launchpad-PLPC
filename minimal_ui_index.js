@@ -29,7 +29,7 @@ const deviceConnectionDelayTimeout = 30000;
 let deviceConnectionTimeout = undefined;
 const commandHistory = [];
 let historyIndex = -1;
-let tomlFileURL = undefined;
+let tomlFileURL = "config/PLPC_config.toml";
 
 import * as utilities from "../js/utils.js"
 import * as esptooljs from "../node_modules/esptool-js/bundle.js";
@@ -238,12 +238,12 @@ function populateAppIconAndName() {
 async function buildMinimalLaunchpadUI() {
     const urlParams = new URLSearchParams(window.location.search);
     const url = window.location.search;
-    const parameter = "flashConfigURL";
-    if (url.includes("&")) {
-        tomlFileURL = url.substring(url.search(parameter) + parameter.length + 1);
-    } else {
-        tomlFileURL = urlParams.get(parameter);
-    }
+    // const parameter = "flashConfigURL";
+    // if (url.includes("&")) {
+    //     tomlFileURL = url.substring(url.search(parameter) + parameter.length + 1);
+    // } else {
+    //     tomlFileURL = urlParams.get(parameter);
+    // }
     if (tomlFileURL) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', tomlFileURL, true);
