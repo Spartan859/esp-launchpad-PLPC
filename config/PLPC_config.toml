@@ -1,0 +1,18 @@
+esp_toml_version = 1.0
+
+supported_apps = ["YeHe-PLPC"]
+
+multipart = true
+
+chip = "esp32-s3"
+
+[YeHe-PLPC]
+icon = "/firmware-icon.jpg"
+readme.text = "/README.md"
+image.esp32-s3.parts = [
+    "/PLPC_FirmwareRelease/bootloader.bin",
+    "/PLPC_FirmwareRelease/partitions.bin",
+    "/PLPC_FirmwareRelease/firmware.bin"
+]
+image.esp32-s3.addresses = ["0x0", "0x8000", "0x10000"]
+console_baudrate = 115200
